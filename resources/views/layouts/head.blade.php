@@ -6,7 +6,9 @@
     <meta name="author" content="Gracom Mais">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>@yield('titulo')</title>
+    <link rel="shortcut icon" href="{{asset('assets/img/icone-imugi.png')}}">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Work+Sans:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/skeleton.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/base.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/fontello.css')}}">
@@ -18,5 +20,17 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/hamburgers.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/range.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
+    <style type="text/css">
+        .cont::-webkit-scrollbar-track {
+            background-color: #F4F4F4;
+        }
+        .cont::-webkit-scrollbar {
+            width: 10px;
+            background: #F4F4F4;
+        }
+        .cont::-webkit-scrollbar-thumb {
+            background: #dad7d7;
+        }
+    </style>
 </head>
-<body>
+<body class="cont">

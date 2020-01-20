@@ -17,6 +17,7 @@ class CreateTopicosTable extends Migration
             $table->bigIncrements('id_topico');
             $table->string('titulo_topico');
             $table->bigInteger('categoria_id');
+            $table->bigInteger('status');
             $table->timestamps();
         });
     }

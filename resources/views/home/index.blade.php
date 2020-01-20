@@ -33,87 +33,24 @@
 								<h3>Bem Vindo ao seu Portal</h3>
 								<span>utilize o menu ao lado para navegar</span>
 							</div>
-							<div class="recent_actions">
-								<div class="title_holder">
-									<span>Atividades Recentes (Upload) </span>
-								</div>
-								<div class="action__single">
-									<div class="icon">
-										<img class="svg" src="img\svg\layers.svg" alt="">
+							<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+								<div class="carousel-inner">
+									<div class="carousel-item active">
+										<img class="d-block w-100" src="{{asset('assets/img/slide/1.jpg')}}" alt="First slide">
 									</div>
-									<div class="content">
-										<p>
-											<span class="title"><a href="#">The Lombardy</a></span>
-											<span class="text">— Your new submission has been approved</span>
-										</p>
-										<span class="time_duration">2 Days Ago</span>
+									<div class="carousel-item">
+										<img class="d-block w-100" src="{{asset('assets/img/slide/2.jpg')}}" alt="Second slide">
 									</div>
 								</div>
-								<div class="action__single">
-									<div class="icon">
-										<img class="svg" src="img\svg\favorite.svg" alt="">
-									</div>
-									<div class="content">
-										<p>
-											<span class="text">John Doe left a review</span>
-											<span class="rating">5.0</span>
-											<span class="text">on</span>
-											<span class="title"><a href="#">Butcher Bar</a></span>
-										</p>
-										<span class="time_duration">4 Days Ago</span>
-									</div>
+								<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+									<span class="sr-only">Previous</span>
+								</a>
+								<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"></span>
+									<span class="sr-only">Next</span>
+								</a>
 								</div>
-								<div class="action__single">
-									<div class="icon">
-										<img class="svg big" src="img\svg\bookmark.svg" alt="">
-									</div>
-									<div class="content">
-										<p>
-											<span class="text">Anna Alieva bookmarked your</span>
-											<span class="title"><a href="#">Mahattan Walking Tour</a></span>
-										</p>
-										<span class="time_duration">7 Days Ago</span>
-									</div>
-								</div>
-								<div class="action__single">
-									<div class="icon">
-										<img class="svg" src="img\svg\layers.svg" alt="">
-									</div>
-									<div class="content">
-										<p>
-											<span class="title"><a href="#">Manhattan Walking Tour</a></span>
-											<span class="text">— Your new submission has been approved</span>
-										</p>
-										<span class="time_duration">14 Days Ago</span>
-									</div>
-								</div>
-								<div class="action__single">
-									<div class="icon">
-										<img class="svg" src="img\svg\favorite.svg" alt="">
-									</div>
-									<div class="content">
-										<p>
-											<span class="text">John Doe left a review</span>
-											<span class="rating">4.0</span>
-											<span class="text">on</span>
-											<span class="title"><a href="#">Honey Badger</a></span>
-										</p>
-										<span class="time_duration">20 Days Ago</span>
-									</div>
-								</div>
-								<div class="action__single">
-									<div class="icon">
-										<img class="svg big" src="img\svg\bookmark.svg" alt="">
-									</div>
-									<div class="content">
-										<p>
-											<span class="text">Anna Alieva bookmarked your</span>
-											<span class="title"><a href="#">Brooklyn Bridge Park</a></span>
-										</p>
-										<span class="time_duration">22 Days Ago</span>
-									</div>
-								</div>
-							</div>
 						</div>
 					</div>
    			

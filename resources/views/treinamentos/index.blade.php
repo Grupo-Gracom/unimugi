@@ -33,77 +33,18 @@
 								<div class="title_holder">
 									<h3>Treinamentos</h3>
 								</div>
-								<div class="active__single">
-									<div class="img_holder">
-										<img src="img\dashboard\active-1.jpg" alt="">
-									</div>
-									<div class="content">
-										<p><a class="name" href="#">The Lombardy</a> — <span class="time_duration unlimited">Unlimited Days Left</span></p>
-										<p>March 15, 2017 / <a class="edit" href="#">Edit</a> / <a class="delete" href="#">Delete</a></p>
-									</div>
-								</div>
-								<div class="active__single">
-									<div class="img_holder">
-										<img src="img\dashboard\active-2.jpg" alt="">
-									</div>
-									<div class="content">
-										<p><a class="name" href="#">Casablanca Hotel</a> — <span class="time_duration limited">2 Days Left</span></p>
-										<p>March 15, 2017 / <a class="edit" href="#">Edit</a> / <a class="delete" href="#">Delete</a></p>
-									</div>
-								</div>
-								<div class="active__single">
-									<div class="img_holder">
-										<img src="img\dashboard\active-3.jpg" alt="">
-									</div>
-									<div class="content">
-										<p><a class="name" href="#">Rock Star Crystals</a> — <span class="time_duration limited">1 Day Left</span></p>
-										<p>March 15, 2017 / <a class="edit" href="#">Edit</a> / <a class="delete" href="#">Delete</a></p>
-									</div>
-								</div>
-								<div class="active__single">
-									<div class="img_holder">
-										<img src="img\dashboard\active-4.jpg" alt="">
-									</div>
-									<div class="content">
-										<p><a class="name" href="#">Butcher Bar</a> — <span class="time_duration unlimited">Unlimited Days Left</span></p>
-										<p>March 15, 2017 / <a class="edit" href="#">Edit</a> / <a class="delete" href="#">Delete</a></p>
-									</div>
-								</div>
-								<div class="active__single">
-									<div class="img_holder">
-										<img src="img\dashboard\active-5.jpg" alt="">
-									</div>
-									<div class="content">
-										<p><a class="name" href="#">Honey Badger</a> — <span class="time_duration limited">20 Days Left</span></p>
-										<p>March 15, 2017 / <a class="edit" href="#">Edit</a> / <a class="delete" href="#">Delete</a></p>
-									</div>
-								</div>
-								<div class="active__single">
-									<div class="img_holder">
-										<img src="img\dashboard\active-6.jpg" alt="">
-									</div>
-									<div class="content">
-										<p><a class="name" href="#">Brooklyn Bridge Park</a> — <span class="time_duration unlimited">Unlimited Days Left</span></p>
-										<p>March 15, 2017 / <a class="edit" href="#">Edit</a> / <a class="delete" href="#">Delete</a></p>
-									</div>
-								</div>
-								<div class="active__single">
-									<div class="img_holder">
-										<img src="img\dashboard\active-7.jpg" alt="">
-									</div>
-									<div class="content">
-										<p><a class="name" href="#">iPic Theaters</a> — <span class="time_duration unlimited">Unlimited Days Left</span></p>
-										<p>March 15, 2017 / <a class="edit" href="#">Edit</a> / <a class="delete" href="#">Delete</a></p>
-									</div>
-								</div>
-								<div class="active__single">
-									<div class="img_holder">
-										<img src="img\dashboard\active-8.jpg" alt="">
-									</div>
-									<div class="content">
-										<p><a class="name" href="#">Nitehawk Cinema</a> — <span class="time_duration unlimited">Unlimited Days Left</span></p>
-										<p>March 15, 2017 / <a class="edit" href="#">Edit</a> / <a class="delete" href="#">Delete</a></p>
-									</div>
+								<div class="row">
+									@foreach($conteudos as $conteudo)
+										<div class="active__single col-md-6">
+											<div class="img_holder">
+												<img src="{{asset('assets/img/dashboard/active-1.jpg')}}" alt="">
+											</div>
+											<div class="content">
+												<p><a class="name item-list" href="#">{{$conteudo->titulo_topico}}</a></p>
+												<p>{{$conteudo->created_at}} </p>
+											</div>
+										</div>
+									@endforeach
 								</div>
 							</div>
 						</div>

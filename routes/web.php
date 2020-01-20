@@ -22,3 +22,4 @@ Route::get('/marketing', ['as'=>'marketing','uses'=>'CategoriaController@marketi
 Route::get('/treinamentos', ['as'=>'treinamentos','uses'=>'CategoriaController@treinamentos']);
 Route::get('/modelos-de-solicitacoes', ['as'=>'modelos-de-solicitacoes','uses'=>'CategoriaController@solicitacoes']);
 Route::get('/staff-franquias', ['as'=>'staff-franquias','uses'=>'CategoriaController@franquias']);
+Route::get('marketing/arquivos/{id}/',  ['as'=>'conteudo/{id}', 'uses'=> 'CategoriaController@conteudo']);
