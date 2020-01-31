@@ -19,13 +19,13 @@
 							<div class="hidden_list_nav">
 								<ul class="nav">
 									<li><a href="{{route('home')}}l">Home</a></li>
-									<li class="label">Canais</li>
+									<li class="label">Categorias</li>
 									<li><a href="{{route('operacional')}}">Operacional</a></li>
 									<li><a href="{{route('marketing')}}">Marketing / Gracom +</a></li>
 									<li><a href="{{route('treinamentos')}}">Treinamentos</a></li>
 									<li><a href="{{route('modelos-de-solicitacoes')}}">Modelos de Solicitações</a></li>
 									<li><a href="{{route('staff-franquias')}}">Manuais e Regulamentos</a></li>
-                                    <li class="label">Opções</li>
+                                    <li class="label">Atalhos</li>
                                     <li><a href="http://lojaunigracom1.com.br/" target="_blank">E-Commerce</a></li>
                                     <li><a href="http://imugi.com.br/acesso/" target="_blank">Portal do Aluno (ADM)</a></li>
                                     <li><a href="http://webmail.imugi.com.br/" target="_blank">Webmail</a></li>

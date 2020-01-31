@@ -14,6 +14,8 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        // $conteudo = new Conteudo();
+        // $this->app->instance("conteudo", $conteudo);
     }
 
     /**

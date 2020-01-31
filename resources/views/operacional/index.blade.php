@@ -15,14 +15,14 @@
     	<div class="directify_fn_dashboard_wrapper">
     		
     		<!-- DASHBOARD BACKGROUND -->
-    		<div class="dashboard_bg">
+    		<!-- <div class="dashboard_bg">
     			<div class="overlay_color"></div>
     			<div class="overlay_image jarallax" data-speed="0.2"></div>
-    		</div>
+    		</div> -->
     		<!-- /DASHBOARD BACKGROUND -->
     		
     		<!-- DASHBOARD CONTENT -->
-    		<div class="container">
+    		<!-- <div class="container"> -->
     			<div class="dashboard_content">
                     @include('layouts.menus.sidebar')
 					
@@ -55,7 +55,7 @@
 					</div>
    			
     			</div>
-    		</div>
+    		<!-- </div> -->
     		<!-- DASHBOARD CONTENT -->
     		
     	</div>
