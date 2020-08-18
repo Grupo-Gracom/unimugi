@@ -1,7 +1,7 @@
 <!-- DASHBOARD MENU -->
 <div class="menu_wrap sticky_sidebar">
 	<div class="menu">
-		
+
 		<div class="header">
 			<div class="prof_who">
 				<div class="img_holder">
@@ -20,7 +20,7 @@
 				<ul class="nav">
 					<li><a href="{{route('admin')}}" class="@if(Route::current()->getName() == 'admin') active-item @endif item"> Início</a></li>
 					<li><a href="{{route('categorias')}}" class="@if(Route::current()->getName() == 'categorias') active-item @endif item"> Categorias</a></li>
-					
+
 				</ul>
 			@else
 				<ul class="nav">
@@ -31,6 +31,7 @@
 					<li><a href="{{route('treinamentos')}}" class="@if(Route::current()->getName() == 'treinamentos') active-item @endif item">Treinamentos</a></li>
 					<li><a href="{{route('modelos-de-solicitacoes')}}" class="@if(Route::current()->getName() == 'modelos-de-solicitacoes') active-item @endif item">Modelos de Solicitações</a></li>
 					<li><a href="{{route('staff-franquias')}}" class="@if(Route::current()->getName() == 'staff-franquias') active-item @endif item">Manuais e Regulamentos</a></li>
+					<li><a href="{{route('pedagogico')}}" class="@if(Route::current()->getName() == 'pedagogico') active-item @endif item">Pedagógico</a></li>
 					<li class="label">Atalhos</li>
 					<li><a href="http://lojaunigracom1.com.br/" class="item" target="_blank">E-Commerce</a></li>
 					<li><a href="http://imugi.com.br/acesso/" class="item" target="_blank">Portal do Aluno (ADM)</a></li>
@@ -41,4 +42,3 @@
 	</div>
 </div>
 <!-- /DASHBOARD MENU -->
-					

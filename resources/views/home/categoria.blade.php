@@ -42,6 +42,7 @@
                 <h4 class="conteudo_topico"></h4>
                 <p class="conteudo_datas">Criado em <b class="conteudo_data"></b><br> Atualizado em <b class="conteudo_data_up"></b></p>
                 <div class="conteudo_descricao box"></div>
+                <div class="imprimir click"><i class="material-icons">print</i></div>
             </div>
         </div>
     </div>

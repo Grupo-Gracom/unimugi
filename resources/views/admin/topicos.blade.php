@@ -13,7 +13,7 @@
             <div id="topicos" class="box">
                 <h3 class="barlow">
                     Tópicos
-                    <button class="click suave novo-topico"><i class="material-icons">add</i><span class="mini-title">Novo Tópico<span></button>
+                    <button class="click suave novo-topico"><i class="material-icons">add_circle</i><span class="mini-title">Novo Tópico<span></button>
                 </h3>
                 <div id="topicos-list">
                     <ul class="list-head">

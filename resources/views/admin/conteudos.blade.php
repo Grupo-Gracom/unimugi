@@ -13,7 +13,7 @@
             <div id="conteudos" class="box">
                 <h3 class="barlow">
                     Conteúdos
-                    <button class="click suave novo-conteudo"><i class="material-icons">add</i><span class="mini-title">Novo Conteúdo<span></button>
+                    <button class="click suave novo-conteudo"><i class="material-icons">add_circle</i><span class="mini-title">Novo Conteúdo<span></button>
                 </h3>
                 <div id="conteudos-list">
                     <ul class="list-head">
@@ -22,6 +22,7 @@
                             <div><h6 class="mini-title">Título</h6></div>
                             <div><h6 class="mini-title">Tópico</h6></div>
                             <div><h6 class="mini-title">Criado em</h6></div>
+                            <div><h6 class="mini-title">Views</h6></div>
                             <div><h6 class="mini-title">Visível?</h6></div>
                             <div><h6 class="mini-title">Ações</h6></div>
                         </li>
@@ -49,6 +50,7 @@
                                         ?>
                                     </h6>
                                 </div>
+                                <div><h6>{{ $conteudo->conteudo_views }}</h6></div>
                                 <div>
                                     <h6>
                                         @if($conteudo->conteudo_status == 1)
@@ -90,7 +92,7 @@
     <div id="lateral" class="suave">
         <div class="overlay suave"></div>
         <div id="ver-conteudo" class="content suave">
-            <h4 class="barlow">Ver conteúdo <i class="material-icons click fechar">close</i></h4>
+            <h4 class="barlow"><i class="material-icons click fechar">close</i></h4>
             <div class="conteudo">
                 <h1 class="conteudo_titulo"></h1>
                 <p class="conteudo_datas">Criado em <b class="conteudo_data"></b><br> Atualizado em <b class="conteudo_data_up"></b></p>
@@ -293,11 +295,11 @@
     });
 
     CKEDITOR.replace( 'conteudo_descricao', {
-        height: 500
+        height: 400
         // filebrowserUploadUrl: "componentes/posts_blog/control/postCreate.php?ACAO=SALVAR_IMAGEM"
     });
     CKEDITOR.replace( 'e_conteudo_descricao', {
-        height: 500
+        height: 400
         //filebrowserUploadUrl: "componentes/posts_blog/control/postCreate.php?ACAO=SALVAR_IMAGEM"
     });
 

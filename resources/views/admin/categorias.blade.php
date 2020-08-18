@@ -13,7 +13,7 @@
             <div id="categorias" class="box">
                 <h3 class="barlow">
                     Categorias
-                    <button class="click suave nova-categoria"><i class="material-icons">add</i><span class="mini-title">Nova Categoria<span></button>
+                    <button class="click suave nova-categoria"><i class="material-icons">add_circle</i><span class="mini-title">Nova Categoria<span></button>
                 </h3>
                 <div id="categorias-list">
                     <ul class="list-head">

@@ -3,12 +3,27 @@
 namespace App\Http\Controllers;
 
 use DB;
+
+use App\User;
 use App\Topico;
 use App\Conteudo;
+use App\ConteudoViews;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ConteudoController extends Controller
 {
+
+    protected $usuario;
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->usuario = Auth::user();
+
+            return $next($request);
+        });
+    }
 
     /**
      * Display a listing of the resource.
@@ -30,7 +45,17 @@ class ConteudoController extends Controller
      */
     public function show($conteudo_id)
     {
+        $id = request()->user()->id;
+        $nivel = request()->user()->nivel;
         $conteudo = Conteudo::find($conteudo_id);
+        if($nivel != 1){
+            Conteudo::find($conteudo_id)->increment('conteudo_views');
+            $view = new ConteudoViews();
+            $view->conteudo_view_data = date("Y-m-d H:m:s");
+            $view->conteudo_id = $conteudo_id;
+            $view->user_id = $id;
+            $view->save();
+        }
         return $conteudo;
     }
     

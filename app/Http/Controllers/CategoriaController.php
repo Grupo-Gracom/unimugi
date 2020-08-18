@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use DB;
 use App\Categoria;
-use App\Topico;
 use App\Conteudo;
+use App\Topico;
 use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
@@ -33,7 +32,7 @@ class CategoriaController extends Controller
         $categoria = Categoria::find($categoria_id);
         return $categoria;
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -43,14 +42,14 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        
-        if($request->has('e_categoria_id')){
+
+        if ($request->has('e_categoria_id')) {
             $categoria = Categoria::find($data['e_categoria_id']);
             $categoria->categoria_titulo = $data['e_categoria_titulo'];
             $categoria->categoria_status = 1;
             $categoria->save();
             return "2";
-        }else{    
+        } else {
             $categoria = new Categoria();
             $categoria->categoria_titulo = $data['categoria_titulo'];
             $categoria->categoria_status = 1;
@@ -71,34 +70,45 @@ class CategoriaController extends Controller
         $categoria->delete();
         return "1";
     }
-    
-    public function operacional(){
-        $topicos = Topico::all()->where('categoria_id', 1);
-        $conteudos = Conteudo::all();
+
+    public function operacional()
+    {
+        $topicos = Topico::all()->where('categoria_id', 1)->where('topico_status', 1);
+        $conteudos = Conteudo::all()->where('conteudo_status', 1);
         return view('home.categoria', compact('topicos', 'conteudos'));
     }
 
-    public function marketing(){
-        $topicos = Topico::all()->where('categoria_id', 2);
-        $conteudos = Conteudo::all();
+    public function marketing()
+    {
+        $topicos = Topico::all()->where('categoria_id', 2)->where('topico_status', 1);
+        $conteudos = Conteudo::all()->where('conteudo_status', 1);
         return view('home.categoria', compact('topicos', 'conteudos'));
     }
 
-    public function treinamentos(){
-        $topicos = Topico::all()->where('categoria_id', 3);
-        $conteudos = Conteudo::all();
+    public function treinamentos()
+    {
+        $topicos = Topico::all()->where('categoria_id', 3)->where('topico_status', 1);
+        $conteudos = Conteudo::all()->where('conteudo_status', 1);
         return view('home.categoria', compact('topicos', 'conteudos'));
     }
 
-    public function solicitacoes(){
-        $topicos = Topico::all()->where('categoria_id', 4);
-        $conteudos = Conteudo::all();
+    public function solicitacoes()
+    {
+        $topicos = Topico::all()->where('categoria_id', 4)->where('topico_status', 1);
+        $conteudos = Conteudo::all()->where('conteudo_status', 1);
         return view('home.categoria', compact('topicos', 'conteudos'));
     }
 
-    public function franquias(){
-        $topicos = Topico::all()->where('categoria_id', 5);
-        $conteudos = Conteudo::all();
+    public function franquias()
+    {
+        $topicos = Topico::all()->where('categoria_id', 5)->where('topico_status', 1);
+        $conteudos = Conteudo::all()->where('conteudo_status', 1);
+        return view('home.categoria', compact('topicos', 'conteudos'));
+    }
+    public function pedagogico()
+    {
+        $topicos = Topico::all()->where('categoria_id', 6)->where('topico_status', 1);
+        $conteudos = Conteudo::all()->where('conteudo_status', 1);
         return view('home.categoria', compact('topicos', 'conteudos'));
     }
 
