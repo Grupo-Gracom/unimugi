@@ -32,6 +32,7 @@
 					<li><a href="{{route('modelos-de-solicitacoes')}}" class="@if(Route::current()->getName() == 'modelos-de-solicitacoes') active-item @endif item">Modelos de Solicitações</a></li>
 					<li><a href="{{route('staff-franquias')}}" class="@if(Route::current()->getName() == 'staff-franquias') active-item @endif item">Manuais e Regulamentos</a></li>
 					<li><a href="{{route('pedagogico')}}" class="@if(Route::current()->getName() == 'pedagogico') active-item @endif item">Pedagógico</a></li>
+					<li><a href="{{route('cadastro-material')}}" class="@if(Route::current()->getName() == 'material') active-item @endif item">Material Download</a></li>
 					<li class="label">Atalhos</li>
 					<li><a href="http://lojaunigracom1.com.br/" class="item" target="_blank">E-Commerce</a></li>
 					<li><a href="http://imugi.com.br/acesso/" class="item" target="_blank">Portal do Aluno (ADM)</a></li>

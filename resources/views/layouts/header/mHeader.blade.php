@@ -1,8 +1,18 @@
  <!-- HEADER -->
+ <i class="material-icons menu-btn">menu</i>
  <header class="">
     <div class="perfil">
         <div class="infos">
-            <h6 class="barlow">{{ Auth::user()->name }}</h6>
+            <h6 class="barlow">
+                {{ Auth::user()->name }}
+                <span>
+                    @if(Auth::user()->nivel == 1)
+                    Admin
+                    @else
+                    Colaborador
+                    @endif
+                </span>
+            </h6>
             <figure>
                 <img src="{{asset('assets/img/dashboard/user.jpg')}}" alt="">
             </figure>
@@ -16,3 +26,8 @@
     </div>
 </header>
 <!-- /HEADER -->
+<script>
+    $(".menu-btn").click(function(){
+        $("nav").toggleClass("active");
+    });
+</script>

@@ -20,6 +20,11 @@ Route::get('/operacional', 'CategoriaController@operacional')->name('operacional
 Route::get('/marketing', 'CategoriaController@marketing')->name('marketing');
 Route::get('/treinamentos', 'CategoriaController@treinamentos')->name('treinamentos');
 Route::get('/pedagogico', 'CategoriaController@pedagogico')->name('pedagogico');
+Route::get('/material', 'CategoriaController@material')->name('material');
+
+// Download
+
+Route::get('download-academico', 'DownloadController@academico')->name('download-academico');
 
 Route::get('/modelos-de-solicitacoes', 'CategoriaController@solicitacoes')->name('modelos-de-solicitacoes');
 Route::get('/manuais-e-regulamentos', 'CategoriaController@franquias')->name('manuais-e-regulamentos');
@@ -32,6 +37,11 @@ Route::resource('conteudos', 'ConteudoController');
 Route::resource('pdf', 'PdfController');
 Route::resource('usuarios', 'UserController');
 Route::resource('noticias', 'NoticiaController');
+Route::resource('materiais', 'MaterialController');
+
+Route::get('/cadastro-material', 'MaterialController@index')->name('cadastro-material');
+// Route::post('/', 'MaterialController@store');
+// Route::get('/{arquivo}', 'MaterialController@show');
 
 Route::post('conteudoImagem', 'ConteudoController@subirImagem')->name('conteudoImagem');
 Route::post('conteudoAvaliacao', 'ConteudoController@foiUtil')->name('conteudoAvaliacao');

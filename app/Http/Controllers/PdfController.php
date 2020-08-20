@@ -16,6 +16,7 @@ class PdfController extends Controller
     {
         $topicos = Topico::all();
         $conteudo = Conteudo::find($conteudo_id);
+        //dd($conteudo);
         return view('pdf.index', compact('conteudo', 'topicos'));
     }
 }

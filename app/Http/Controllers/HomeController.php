@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Noticia;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home/index');
+        $ultimasNoticias = Noticia::orderBy('noticia_id', 'desc')->simplePaginate(10);
+        return view('home/index', compact('ultimasNoticias'));
     }
 }

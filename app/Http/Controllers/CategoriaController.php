@@ -112,4 +112,10 @@ class CategoriaController extends Controller
         return view('home.categoria', compact('topicos', 'conteudos'));
     }
 
+    public function material()
+    {
+        $topicos = Topico::all()->where('categoria_id', 7)->where('topico_status', 1);
+        $conteudos = Conteudo::all()->where('conteudo_status', 1);
+        return view('material.index', compact('topicos', 'conteudos'));
+    }
 }

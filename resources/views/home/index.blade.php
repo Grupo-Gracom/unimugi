@@ -3,7 +3,6 @@
 @section('conteudo')
 <!-- WRAPPER ALL -->
 
-	@include('layouts.menus.mobile')
 	@include('layouts.menus.mSidebar')
     @include('layouts.header.mHeader')
     		

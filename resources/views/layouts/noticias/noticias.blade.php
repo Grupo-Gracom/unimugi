@@ -4,36 +4,24 @@
         <p>Acompanhe as novidades.</p>
     </div>
     <ul>
+        @foreach($ultimasNoticias as $noticia)
         <li>
-            <h6 class="barlow">20-01-2020</h6>
+            <h6 class="barlow">
+                <?php
+                    $data = new DateTime($noticia->noticia_data);
+                    $criadoEm = $data->format("d/m/Y");
+                    echo $criadoEm;
+                ?>
+            </h6>
             <div class="noticia">
-                <figure>
+                <!-- <figure>
                     <img src="{{asset('assets/img/slide/1.jpg')}}"  alt="">
-                </figure>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <a href="#!">Saiba mais</a>
-            </div>
-            <div class="noticia">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <a href="#!">Saiba mais</a>
+                </figure> -->
+                <h6 class="barlow">{{ $noticia->noticia_titulo }}</h6>
+                <div class="descricao">{{ $noticia->noticia_descricao_curta }}</div>
+                <a href="noticia/{{ $noticia->noticia_id}}">Saiba mais</a>
             </div>
         </li>
-        <li>
-            <h6 class="barlow">18-01-2020</h6>
-            <div class="noticia">
-                <figure>
-                    <img src="{{asset('assets/img/slide/2.jpg')}}"  alt="">
-                </figure>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <a href="#!">Saiba mais</a>
-            </div>
-            <div class="noticia">
-                <figure>
-                    <img src="{{asset('assets/img/slide/2.jpg')}}"  alt="">
-                </figure>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <a href="#!">Saiba mais</a>
-            </div>
-        </li>
+        @endforeach
     </ul>
 </div>

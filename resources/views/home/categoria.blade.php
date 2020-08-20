@@ -1,9 +1,8 @@
 @extends('layouts.template')
-@section('titulo','UNIMUGI | Home')
+@section('titulo','UNIMUGI')
 @section('conteudo')
 <!-- WRAPPER ALL -->
 
-	@include('layouts.menus.mobile')
 	@include('layouts.menus.mSidebar')
     @include('layouts.header.mHeader')
     		
@@ -34,15 +33,24 @@
 
     <!-- LATERAL CONTENT -->
     <div id="lateral" class="suave">
-        <div class="overlay suave"></div>
-        <div id="ver-conteudo" class="content suave">
+        <div class="overlay suave" style="background-color: white;"></div>
+        <div id="ver-conteudo" class="content suave" style="background-color: rgba(125, 194, 66, 0.15);">
             <h4 class="barlow"><i class="material-icons click fechar">close</i></h4>
             <div class="conteudo">
                 <h1 class="conteudo_titulo" style="margin-bottom: 0;">Titulo</h1>
                 <h4 class="conteudo_topico"></h4>
                 <p class="conteudo_datas">Criado em <b class="conteudo_data"></b><br> Atualizado em <b class="conteudo_data_up"></b></p>
                 <div class="conteudo_descricao box"></div>
-                <div class="imprimir click"><i class="material-icons">print</i></div>
+                <div class="util">
+                    <p>Este conteúdo foi útil?</p>
+                    <form id="form-avaliacao" method="post">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <input type="hidden" name="conteudo_id" value="">
+                    </form>
+                    <button class="sim mini-title suave click" data-util="1">Sim</button>
+                    <button class="nao mini-title suave click" data-util="2">Não</button>
+                </div>
+                <div class="imprimir click"><a href="" target="_blank"><i class="material-icons">print</i></a></div>
             </div>
         </div>
     </div>
@@ -60,6 +68,8 @@
 
         $(document).on("click", ".ver-conteudo", function(){
             $("#lateral, #ver-conteudo").addClass("active");
+            $('#form-avaliacao input[name="conteudo_id"]').val($(this).attr("data-id"));
+            $(".imprimir a").attr("href", "pdf/"+$(this).attr("data-id"));
             conteudo($(this).attr("data-id"));
         });
 
@@ -81,6 +91,38 @@
                 var dataup = response.conteudo_data_up.split(' ');
                 var datasplitup = dataup[0].split('-');
                 $("#ver-conteudo .conteudo_data_up").text(datasplit[2]+'/'+datasplit[1]+'/'+datasplit[0]);
+            });
+        }
+
+        $(".util .sim").click(function(){
+            $(".util .sim, .util .nao").prop('disabled', true);
+            criarAvaliacao($(this).attr("data-util"));
+        });
+        $(".util .nao").click(function(){
+            $(".util .sim, .util .nao").prop('disabled', true);
+            criarAvaliacao($(this).attr("data-util"));
+        });
+        function criarAvaliacao(voto){
+            var avaliacao = {
+                "_token" : $('#form-avaliacao input[name="_token"]').val(),
+                "conteudo_avaliacao" : voto,
+                "conteudo_id" : $('#form-avaliacao input[name="conteudo_id"]').val()
+            };
+            request = $.ajax({
+                url: 'conteudoAvaliacao',
+                data: avaliacao,
+                type: 'post',
+                error: function(){
+                    //criaAlerta(0,"Falha ao deletar categoria!!",2000);
+                    console.log("deu pal");
+                }
+            });
+            request.done(function(response){
+                if(response == "1"){
+                    alert("Obrigado por avaliar");
+                }else{
+                    alert("Você já avaliou este conteúdo.");
+                }
             });
         }
 

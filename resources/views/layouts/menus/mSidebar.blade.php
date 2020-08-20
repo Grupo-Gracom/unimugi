@@ -35,6 +35,11 @@
                 </a>
             </li>
             <li>
+                <a href="{{route('cadastro-material')}}" class="@if(Route::current()->getName() == 'cadastro-material') active-item @endif item">
+                    <i class="material-icons">chat</i>Material
+                </a>
+            </li>
+            <li>
                 <a href="{{route('usuarios.index')}}" class="@if(Route::current()->getName() == 'usuarios.index') active-item @endif item">
                     <i class="material-icons">account_circle</i>Usuários
                 </a>
@@ -73,6 +78,11 @@
             <li>
                 <a href="pedagogico" class="@if(Route::current()->getName() == 'pedagogico') active-item @endif item">
                     <i class="material-icons">folder</i> Pedagógico
+                </a>
+            </li>
+            <li>
+                <a href="material" class="@if(Route::current()->getName() == 'material') active-item @endif item">
+                    <i class="material-icons">folder</i> Material Download
                 </a>
             </li>
         </ul>
@@ -118,6 +128,11 @@
             <li>
                 <a href="pedagogico" class="@if(Route::current()->getName() == 'pedagogico') active-item @endif item">
                     <i class="material-icons">folder</i> Pedagógico
+                </a>
+            </li>
+            <li>
+                <a href="material" class="@if(Route::current()->getName() == 'material') active-item @endif item">
+                    <i class="material-icons">folder</i> Material Download
                 </a>
             </li>
             <li class="label"></li>

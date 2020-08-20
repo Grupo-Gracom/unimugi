@@ -3,7 +3,6 @@
 @section('conteudo')
 <!-- WRAPPER ALL -->
 
-	@include('layouts.menus.mobile')
     @include('layouts.menus.mSidebar')
     @include('layouts.header.mHeader')
     
@@ -82,13 +81,19 @@
             <h4 class="barlow">Novo tópico <i class="material-icons click fechar">close</i></h4>
             <form id="form-novo-topico" action="{{ route('topicos.store') }}" method="post">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
-                <label for="topico-titulo">Título</label>
+                <label for="topico_titulo">Título</label>
                 <input type="text" name="topico_titulo" id="topico_titulo" placeholder="Título do tópico" required>
+                <label for="categoria_id">Categoria</label>
                 <select name="categoria_id" id="categoria_id">
                     @foreach($categorias as $categoria)
                         <option value="{{ $categoria->categoria_id }}">{{ $categoria->categoria_titulo }}</option>
                     @endforeach
                 </select>
+                <label for="topico_status" style="margin-top: 16px;">Visível?</label>
+                    <select name="topico_status" id="topico_status">
+                        <option value="1">Sim</option>
+                        <option value="0">Não</option>
+                    </select>
                 <div class="clear"></div>
                 <button type="submit">Confirmar</button>
             </form>
@@ -100,11 +105,17 @@
                 <input type="hidden" name="e_topico_id" value="">
                 <label for="e_topico_titulo">Título</label>
                 <input type="text" name="e_topico_titulo" id="e_topico_titulo" placeholder="Título do tópico" required>
+                <label for="e_topico_categoria">Categoria</label>
                 <select name="e_categoria_id" id="e_categoria_id">
                     @foreach($categorias as $categoria)
                         <option value="{{ $categoria->categoria_id }}">{{ $categoria->categoria_titulo }}</option>
                     @endforeach
                 </select>
+                <label for="e_topico_status" style="margin-top: 16px;">Visível?</label>
+                    <select name="e_topico_status" id="e_topico_status">
+                        <option value="1">Sim</option>
+                        <option value="0">Não</option>
+                    </select>
                 <div class="clear"></div>
                 <button type="submit">Confirmar</button>
             </form>
@@ -167,6 +178,8 @@
         });
         request.done(function(response){
             $('#form-editar-topico input[name="e_topico_titulo"]').val(response.topico_titulo);
+            $('#form-editar-topico #e_categoria_id option[value="'+response.categoria_id+'"]').attr("selected", true);
+            $('#form-editar-topico #e_topico_status option[value="'+response.topico_status+'"]').attr("selected", true);
         });
     }
 
@@ -174,7 +187,8 @@
         var topico = {
             "_token" : $('#form-novo-topico input[name="_token"]').val(),
             "topico_titulo" : $('#form-novo-topico input[name="topico_titulo"]').val(),
-            "categoria_id" : $('#form-novo-topico select option:selected').val()
+            "topico_status" : $('#form-novo-topico #topico_status option:selected').val(),
+            "categoria_id" : $('#form-novo-topico #categoria_id option:selected').val()
         };
         request = $.ajax({
             url: 'topicos',
@@ -198,7 +212,8 @@
             "_token" : $('#form-editar-topico input[name="_token"]').val(),
             "e_topico_id" : topico_id,
             "e_topico_titulo" : $('#form-editar-topico input[name="e_topico_titulo"]').val(),
-            "e_categoria_id" : $('#form-editar-topico select option:selected').val()
+            "e_topico_status" : $('#form-editar-topico #e_topico_status option:selected').val(),
+            "e_categoria_id" : $('#form-editar-topico #e_categoria_id option:selected').val()
         };
         request = $.ajax({
             url: 'topicos',
@@ -239,7 +254,7 @@
         });
     }
     
-    $("#lateral .fechar, #lateral .overlay").click(function(){
+    $("#lateral .fechar").click(function(){
         $("#lateral, #lateral .content").removeClass("active");
     });
 

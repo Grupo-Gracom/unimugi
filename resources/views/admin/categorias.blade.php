@@ -3,7 +3,6 @@
 @section('conteudo')
 <!-- WRAPPER ALL -->
 
-	@include('layouts.menus.mobile')
     @include('layouts.menus.mSidebar')
     @include('layouts.header.mHeader')
     
@@ -217,7 +216,7 @@
         });
     }
     
-    $("#lateral .fechar, #lateral .overlay").click(function(){
+    $("#lateral .fechar").click(function(){
         $("#lateral, #lateral .content").removeClass("active");
     });
 

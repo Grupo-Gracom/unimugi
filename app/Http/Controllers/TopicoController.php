@@ -47,14 +47,14 @@ class TopicoController extends Controller
         if($request->has('e_topico_id')){
             $topico = Topico::find($data['e_topico_id']);
             $topico->topico_titulo = $data['e_topico_titulo'];
-            $topico->topico_status = 1;
+            $topico->topico_status = $data['e_topico_status'];
             $topico->categoria_id = $data['e_categoria_id'];
             $topico->save();
             return "2";
         }else{    
             $topico = new Topico();
             $topico->topico_titulo = $data['topico_titulo'];
-            $topico->topico_status = 1;
+            $topico->topico_status = $data['topico_status'];
             $topico->categoria_id = $data['categoria_id'];
             $topico->save();
             return "1";

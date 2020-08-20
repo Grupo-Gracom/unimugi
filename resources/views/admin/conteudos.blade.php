@@ -3,7 +3,6 @@
 @section('conteudo')
 <!-- WRAPPER ALL -->
 
-	@include('layouts.menus.mobile')
     @include('layouts.menus.mSidebar')
     @include('layouts.header.mHeader')
     
@@ -72,17 +71,19 @@
                             </li>
                         @endforeach
                     </ul>
-                    <!-- <ul class="list-foot">
+                    @if($conteudosCount > 10)
+                    <ul class="list-foot">
                         <li>
                             <div>
                                 <h6>
-                                    <i class="material-icons click">keyboard_arrow_left</i>
-                                    1 de 10
-                                    <i class="material-icons click">keyboard_arrow_right</i>
+                                    <i class="material-icons click prev">keyboard_arrow_left</i>
+                                    <span class="pageAtual">1</span> de <span class="limite" data-limite="<?php echo ceil($conteudosCount / 10); ?>"><?php echo ceil($conteudosCount / 10); ?></span>
+                                    <i class="material-icons click next">keyboard_arrow_right</i>
                                 </h6>
                             </div>
                         </li>
-                    </ul> -->
+                    </ul>
+                    @endif
                 </div>
             </div>
         </div>
@@ -107,12 +108,21 @@
                 <input type="text" name="conteudo_titulo" id="conteudo_titulo" placeholder="Título do tópico" required>
                 <label for="conteudo_descricao">Descrição</label>
                 <textarea name="conteudo_descricao" id="conteudo_descricao" class="editor"></textarea>
-                <label for="topico_id" style="margin-top: 16px;">Pertence ao tópico:</label>
-                <select name="topico_id" id="topico_id">
-                    @foreach($topicos as $topico)
-                        <option value="{{ $topico->topico_id }}">{{ $topico->topico_titulo }}</option>
-                    @endforeach
-                </select>
+                <div class="metade esquerda">
+                    <label for="topico_id" style="margin-top: 16px;">Pertence ao tópico:</label>
+                    <select name="topico_id" id="topico_id">
+                        @foreach($topicos as $topico)
+                            <option value="{{ $topico->topico_id }}">{{ $topico->topico_titulo }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="metade direita">
+                    <label for="conteudo_status" style="margin-top: 16px;">Visível?</label>
+                    <select name="conteudo_status" id="conteudo_status">
+                        <option value="1">Sim</option>
+                        <option value="0">Não</option>
+                    </select>
+                </div>
                 <div class="clear"></div>
                 <button type="submit">Confirmar</button>
             </form>
@@ -126,12 +136,21 @@
                 <input type="text" name="e_conteudo_titulo" id="e_conteudo_titulo" placeholder="Título do tópico" required>
                 <label for="e_conteudo_descricao">Descrição</label>
                 <textarea name="e_conteudo_descricao" id="e_conteudo_descricao" class="editor"></textarea>
-                <label for="e_topico_id" style="margin-top: 16px;">Pertence ao tópico:</label>
-                <select name="e_topico_id" id="e_topico_id">
-                    @foreach($topicos as $topico)
+                <div class="metade esquerda">
+                    <label for="e_topico_id" style="margin-top: 16px;">Pertence ao tópico:</label>
+                    <select name="e_topico_id" id="e_topico_id">
+                        @foreach($topicos as $topico)
                         <option value="{{ $topico->topico_id }}">{{ $topico->topico_titulo }}</option>
-                    @endforeach
-                </select>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="metade direita">
+                    <label for="e_conteudo_status" style="margin-top: 16px;">Visível?</label>
+                    <select name="e_conteudo_status" id="e_conteudo_status">
+                        <option value="1">Sim</option>
+                        <option value="0">Não</option>
+                    </select>
+                </div>
                 <div class="clear"></div>
                 <button type="submit">Confirmar</button>
             </form>
@@ -149,12 +168,52 @@
     </div>
 
 <script>
+    function paginadores(){
+        var link = window.location.href;
+        var pages = link.split("?");
+        var limite = $(".limite").attr("data-limite");
+        if(pages.length > 1){
+            var page = pages[1].split("=");
+            var atual = parseInt(page[1]);
+            var next = parseInt(page[1]) + 1;
+            var prev = parseInt(page[1]) - 1;
+            if(atual < limite){
+                $(".next").attr("data-page", next);
+                $(".prev").attr("data-page", prev);
+            }else{
+                $(".next").attr("data-page", limite);
+                $(".prev").attr("data-page", limite -1);
+            }
+            if(atual == 1){
+                $(".next").attr("data-page", 2);
+                $(".prev").attr("data-page", 1);
+            }
+        $(".pageAtual").text(atual);
+        }else{
+            $(".next").attr("data-page", 2);
+            $(".prev").attr("data-page", 1);
+        }
+    }paginadores();
+
+    $(".next").click(function(){
+        window.location.href = "conteudos?page="+ $(this).attr("data-page");
+    });
+
+    $(".prev").click(function(){
+        window.location.href = "conteudos?page="+ $(this).attr("data-page");
+    });
+
     $(".novo-conteudo").click(function(){
         $("#lateral, #novo-conteudo").addClass("active");
         $("#form-novo-conteudo").submit(function(e){
             e.preventDefault();
             $(this).find('button').prop('disabled', true);
-            criarConteudo();
+            if($('#form-novo-conteudo textarea[name="conteudo_descricao"]').val() == ''){
+                alert("O campo descrição não pode estar vazio!");
+                $(this).find('button').prop('disabled', false);
+            }else{
+                criarConteudo();
+            }
         });
     });
 
@@ -200,6 +259,8 @@
         request.done(function(response){
             if(operacao == 2){
                 $('#form-editar-conteudo input[name="e_conteudo_titulo"]').val(response.conteudo_titulo);
+                $('#form-editar-conteudo #e_topico_id option[value="'+response.topico_id+'"]').attr("selected", true);
+                $('#form-editar-conteudo #e_conteudo_status option[value="'+response.conteudo_status+'"]').attr("selected", true);
                 CKEDITOR.instances.e_conteudo_descricao.setData(response.conteudo_descricao);
             }else if(operacao == 1){
                 $("#ver-conteudo .conteudo_titulo").text(response.conteudo_titulo);
@@ -219,6 +280,7 @@
             "_token" : $('#form-novo-conteudo input[name="_token"]').val(),
             "conteudo_titulo" : $('#form-novo-conteudo input[name="conteudo_titulo"]').val(),
             "conteudo_descricao" : $('#form-novo-conteudo textarea[name="conteudo_descricao"]').val(),
+            "conteudo_status" : $('#form-novo-conteudo #conteudo_status option:selected').val(),
             "topico_id" : $('#form-novo-conteudo select option:selected').val()
         };
         request = $.ajax({
@@ -244,7 +306,8 @@
             "e_conteudo_id" : conteudo_id,
             "e_conteudo_titulo" : $('#form-editar-conteudo input[name="e_conteudo_titulo"]').val(),
             "e_conteudo_descricao" : CKEDITOR.instances.e_conteudo_descricao.getData(),
-            "e_topico_id" : $('#form-editar-conteudo select option:selected').val()
+            "e_conteudo_status" : $('#form-editar-conteudo #e_conteudo_status option:selected').val(),
+            "e_topico_id" : $('#form-editar-conteudo #e_topico_id option:selected').val()
         };
         request = $.ajax({
             url: 'conteudos',
@@ -285,7 +348,7 @@
         });
     }
     
-    $("#lateral .fechar, #lateral .overlay").click(function(){
+    $("#lateral .fechar").click(function(){
         $("#lateral, #lateral .content").removeClass("active");
     });
 
@@ -295,12 +358,15 @@
     });
 
     CKEDITOR.replace( 'conteudo_descricao', {
-        height: 400
-        // filebrowserUploadUrl: "componentes/posts_blog/control/postCreate.php?ACAO=SALVAR_IMAGEM"
+        height: 400,
+        filebrowserUploadUrl: "{{route('conteudoImagem', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
     });
+
     CKEDITOR.replace( 'e_conteudo_descricao', {
-        height: 400
-        //filebrowserUploadUrl: "componentes/posts_blog/control/postCreate.php?ACAO=SALVAR_IMAGEM"
+        height: 400,
+        filebrowserUploadUrl: "{{route('conteudoImagem', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form'
     });
 
 </script>

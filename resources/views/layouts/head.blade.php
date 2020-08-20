@@ -5,6 +5,9 @@
     <meta name="description" content="UNIIMUGI">
     <meta name="author" content="Gracom Mais">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-navbutton-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#ffffff">
     <title>@yield('titulo')</title>
     <link rel="shortcut icon" href="{{asset('assets/img/icone-imugi.png')}}">
     <!-- <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Work+Sans:300,400,500,600,700,800,900" rel="stylesheet"> -->
@@ -35,6 +38,7 @@
             background: #dad7d7;
         }
     </style>
+    
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.ckeditor.com/4.6.2/full/ckeditor.js"></script>

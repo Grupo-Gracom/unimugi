@@ -1,5 +1,5 @@
 <!-- FOOTER -->
-<footer class="directify_fn_footer_wrap">
+<!-- <footer class="directify_fn_footer_wrap">
 	<div class="directify_fn_footer">
 		<div class="footer_wrap">
 			<div class="footer_nav_list_wrap">
@@ -13,7 +13,7 @@
 			</div>
 		</div>
 	</div>
-</footer>
+</footer> -->
 <!-- /FOOTER -->
 
-<a class="totop" href="#"><i class="xcon-angle-up"></i></a>
+<!-- <a class="totop" href="#"><i class="xcon-angle-up"></i></a> -->
